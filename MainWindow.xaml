@@ -1,0 +1,384 @@
+﻿<Window x:Class="抽奖程序.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+        xmlns:local="clr-namespace:抽奖程序"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Deactivated="Window_Deactivated"
+        Title="MainWindow" Height="455" Width="457">
+    <Window.Resources>
+        <Style x:Key="BaseStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="SaleButton" TargetType="{x:Type Button}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Grid.Row" Value="5"/>
+        </Style>
+        <Style x:Key="ZhiZunButton" BasedOn="{StaticResource SaleButton}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="salebuttonborder1" BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" Background="#01ffffff">
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="购买" FontSize="16" FontWeight="Bold" FontFamily="微软雅黑"  Foreground="#800" Margin="0,3,0,16"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="salebuttonborder1" Property="Background" Value="#40ffffff"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="AgainButton" TargetType="{x:Type Button}">
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}" >
+                        <Border x:Name="again_border" BorderBrush="#FF8800" Background="#FF8800" CornerRadius="24" >
+                            <TextBlock Text="再买一次" Foreground="White" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="again_border" Property="Background" Value="#90FF8800"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="GaoJiButton" BasedOn="{StaticResource SaleButton}" TargetType="{x:Type Button}" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="salebuttonborder1" BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" Background="#01ffffff">
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"  Text="购买"  FontSize="16" FontWeight="Bold"  Foreground="#ffffff" Margin="0,3,0,16"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="salebuttonborder1" Property="Background" Value="#40ffffff"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="PuTongButton" BasedOn="{StaticResource SaleButton}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="salebuttonborder1" BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" Background="#01ffffff">
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"  Text="购买"  FontSize="16" FontWeight="Bold" FontFamily="微软雅黑"  Foreground="#ffffff" Margin="0,3,0,16"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="salebuttonborder1" Property="Background" Value="#40ffffff"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MoreButton" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="myBorder"  BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="20">
+                            <Border.Background>#80812700</Border.Background>
+                            <Image Source="Resources/icon-more-pc-normal_5dcbec.png" Opacity="0.9" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="myBorder" Property="Background" Value="#107A1300"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="CloseButton" TargetType="{x:Type Button}">
+            <Setter Property="Grid.Column" Value="4"/>
+            <Setter Property="Grid.ColumnSpan" Value="2"/>
+            <Setter Property="Grid.RowSpan" Value="2"/>
+            <Setter Property="Width" Value="24"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Margin" Value="20,0,0,10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="myBorder"  BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="15">
+                            <Border.Background>#af3800</Border.Background>
+                            <TextBlock Text="×" FontSize="22" Foreground="#fff" TextAlignment="Center"  FontWeight="Medium"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,2"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="GiftIcon" TargetType="{x:Type Image}">
+            <Setter Property="Grid.Row" Value="2"/>
+            <Setter Property="Margin" Value="25,10,0,10"/>
+            <Setter Property="Stretch" Value="Fill"/>
+        </Style>
+        <Style x:Key="GiftName" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Foreground" Value="#fc0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Grid.Row" Value="2"/>
+            <Setter Property="Margin" Value="0,11,0,0"/>
+        </Style>
+        <Style x:Key="PriseLable" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Grid.Row" Value="4"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+        </Style>
+        <Style x:Key="BasePopItemStyle" TargetType="{x:Type Button}" >
+            <Setter Property="Foreground" Value="#000000"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="4,4,4,4"/>
+        </Style>
+        <Style x:Key="Pop_ExplainButton" TargetType="{x:Type Button}"  BasedOn="{StaticResource BasePopItemStyle}">
+            <Setter Property="Width" Value="83"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="UpgateBtnBorder" Background="White"  BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="21">
+                            <TextBlock Text="规则说明" FontSize="14" Foreground="#666666" TextAlignment="Center"   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="UpgateBtnBorder" Property="Background" Value="#F0F0F0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="Pop_NumButton" TargetType="{x:Type Button}"  BasedOn="{StaticResource BasePopItemStyle}">
+            <Setter Property="Width" Value="86"/>
+            <Setter Property="Height" Value="37"/>
+            <Setter Property="Foreground" Value="#999999"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="UpgateBtnBorder" Background="{TemplateBinding Background}"  BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="21">
+                            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="UpgateBtnBorder" Property="Background" Value="#ebebeb"/>
+                                <Setter Property="Foreground" Value="#000000"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <SolidColorBrush Opacity="0" Color="Transparent"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="108*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="64*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="64*"/>
+            <ColumnDefinition Width="189*"/>
+            <ColumnDefinition Width="185*"/>
+            <ColumnDefinition Width="188*"/>
+            <ColumnDefinition Width="64*"/>
+            <ColumnDefinition Width="40*"/>
+        </Grid.ColumnDefinitions>
+        <Image  Grid.Row="1" Grid.RowSpan="7" Grid.ColumnSpan="6" Source="Resources\page-bg-home_84fbd5.png" Stretch="Fill" Margin="0,0,25,0"/>
+        <Border MouseMove="Image_MouseMove" Background="#01ffffff" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="20,12,20,49" Grid.RowSpan="2" Cursor="SizeAll"/>
+        <!--标题栏-->
+        <Button FocusVisualStyle="{x:Null}" x:Name="BtnPop" Grid.Row="1" Click="BtnPop_Click" Style="{StaticResource MoreButton}" Grid.Column="4" Content="None" Width="25" Height="25" Margin="0,17,2,0" Cursor="Hand" />
+        <Button FocusVisualStyle="{x:Null}" x:Name="BtnClose" Click="BtnClose_Click"  Style="{StaticResource CloseButton}" Grid.Column="4" Grid.ColumnSpan="2" Width="25" Height="25" Margin="28,25,10,38" Grid.RowSpan="2" Cursor="Hand"  />
+        <!--礼物标题-->
+        <Image  Grid.Column="1" Source="Resources\icon-title_ac1fa3.png"  Style="{StaticResource GiftIcon}" Margin="23,14,23,3" Grid.Row="3"/>
+        <TextBlock Text="至尊礼包" Grid.Column="1" Style="{StaticResource GiftName}" Height="16" Grid.Row="3" Width="48"/>
+        <Image Grid.Column="2" Source="Resources\icon-title_ac1fa3.png" Style="{StaticResource GiftIcon}" Margin="23,14,23,3" Grid.Row="3"/>
+        <TextBlock Text="高级礼包" Grid.Column="2"  Style="{StaticResource GiftName}" Height="16" Grid.Row="3" Width="48"/>
+        <Image Grid.Column="3" Source="Resources\icon-title_ac1fa3.png" Style="{StaticResource GiftIcon}" Margin="23,14,23,3" Grid.Row="3"/>
+        <TextBlock Text="普通礼包" Grid.Column="3"  Style="{StaticResource GiftName}" Height="16" Grid.Row="3" Width="48"/>
+        <!--礼物图片-->
+        <Image Grid.Row="4" Grid.Column="1" Source="Resources\icon-giftbag-lv1-normal.png" Margin="3,2,3,6" />
+        <Image Grid.Row="4" Grid.Column="2" Source="Resources\icon-giftbag-lv2-normal_072802.png" Margin="3,2,3,6" />
+        <Image Grid.Row="4" Grid.Column="3" Source="Resources\icon-giftbag-lv3-normal_f0b8e0.png" Margin="3,2,3,6" />
+        <!--购买按钮-->
+        <Button FocusVisualStyle="{x:Null}" x:Name="btn_zhizun" Style="{StaticResource ZhiZunButton}" Grid.Column="1" Click="btn_zhizun_Click" Height="50" Grid.Row="5" VerticalAlignment="Center" Width="100" Cursor="Hand" />
+        <TextBlock Text="100水晶" Grid.Column="1" Foreground="#f46" Style="{StaticResource PriseLable}" Height="15" Margin="0,28,0,0" Grid.Row="5" VerticalAlignment="Top" Width="45" Cursor="Hand"/>
+        <Button FocusVisualStyle="{x:Null}" x:Name="btn_gaoji" Style="{StaticResource GaoJiButton}" Grid.Column="2" Click="btn_gaoji_Click" Height="50" Grid.Row="5" VerticalAlignment="Center" Width="100" Cursor="Hand"/>
+        <TextBlock Text="10水晶" Grid.Column="2" Foreground="#fe0" Style="{StaticResource PriseLable}" Height="15" Margin="0,28,0,0" Grid.Row="5" VerticalAlignment="Top" Width="38" Cursor="Hand"/>
+        <Button FocusVisualStyle="{x:Null}"  x:Name="btn_putong" Style="{StaticResource PuTongButton}" Grid.Column="3" Click="btn_putong_Click" Height="50" Grid.Row="5" VerticalAlignment="Center" Width="100" Cursor="Hand"/>
+        <TextBlock Text="5水晶" Grid.Column="3" Foreground="#fe0" Style="{StaticResource PriseLable}" Height="15" Margin="0,28,0,0" Grid.Row="5" VerticalAlignment="Top" Width="31" Cursor="Hand"/>
+        <!--底部栏+动画-->
+        <Canvas Grid.Row="7" Grid.ColumnSpan="5">
+            <Grid Grid.Row="7" Grid.ColumnSpan="5" Width="432"  Canvas.Left="0" Name="GroupboxArea">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="42*"/>
+                    <ColumnDefinition Width="74*"/>
+                    <ColumnDefinition Width="225*"/>
+                    <ColumnDefinition Width="73*"/>
+
+                    <ColumnDefinition Width="18*"/>
+                </Grid.ColumnDefinitions>
+                <!--底部内容 -->
+                <Border Grid.Column="0" Grid.ColumnSpan="2"  CornerRadius="15" Width="67" HorizontalAlignment="Left" Margin="24,21,0,19">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="1.002,0.498" StartPoint="-0.024,0.502">
+                            <GradientStop Color="#880000" Offset="0.027"/>
+                            <GradientStop Color="#af3800" Offset="0.948"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Image  Grid.Column="0" Grid.ColumnSpan="2" Source="Resources\icon-crystal-big_0048d3.png" Width="36" HorizontalAlignment="Left" Margin="23,9,0,8"/>
+                <TextBlock Text="{Binding DiamondNum}" Grid.Column="1" Foreground="#ffffff" FontSize="14" Margin="22,0,10,0" VerticalAlignment="Center" Height="16" Cursor="IBeam"/>
+                <!--{Binding ShovelNums}-->
+                <Button Style="{DynamicResource ButtonStyle2}" x:Name="btn_num" Click="btn_num_Click"   Content="{Binding ShovelNums}" Background="{x:Null}" Foreground="#fff" FontSize="14" Grid.Column="2" VerticalAlignment="Center" BorderThickness="0" HorizontalAlignment="Right" Height="24" Margin="0,1,1,0" Cursor="Hand"  />
+                <Image Source="Resources\icon-dropdown_3b2eb9.png" Grid.Column="2" Width="11" HorizontalAlignment="Right" Margin="0,30,11,31" Cursor="Hand"/>
+                <Image  x:Name="img_shovel" Grid.Column="2" Source="Resources\icon-gift1.png" Width="30" HorizontalAlignment="Left" Margin="70,19,0,19" Cursor="Hand"/>
+                <Button Grid.Column="3" Grid.ColumnSpan="1" Margin="1,17,0,15" Click="Button_Click_2" Cursor="Hand"  >
+                    <Button.Template >
+                        <ControlTemplate TargetType="{x:Type Button}" >
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="18">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="1.002,-0.498" StartPoint="0.024,0.502">
+                                        <GradientStop Color="#FFD115" Offset="0.027"/>
+                                        <GradientStop Color="#FFA453" Offset="0.9"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <TextBlock Text="赠送" Foreground="#862828" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Canvas>
+        <!--弹出菜单-->
+        <Popup x:Name="Pop" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=BtnPop}" Placement="Bottom" AllowsTransparency="True" StaysOpen="False" LostFocus="Pop_LostFocus" Grid.ColumnSpan="2" Margin="0,0,24,18" Grid.RowSpan="2">
+            <Border Background="#ffffff" CornerRadius="12">
+                <StackPanel Margin="2">
+                    <Button  x:Name="btn_explain"  Style="{StaticResource Pop_ExplainButton}" Click="btn_explain_Click" Cursor="Hand" />
+                </StackPanel>
+            </Border>
+        </Popup>
+        <Popup x:Name="PopNum"  PopupAnimation="Slide" LostFocus="PopNum_LostFocus" PlacementTarget="{Binding ElementName=btn_num}" Placement="Top"  AllowsTransparency="True" StaysOpen="False"  Grid.ColumnSpan="2"  Grid.RowSpan="2">
+            <Border Background="#ffffff" CornerRadius="12">
+                <StackPanel  Margin="8,0,8,0">
+                    <Button x:Name="btn_num1" Click="btn_num1_Click" Content="5"  HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource Pop_NumButton}" Margin="0,12,0,0" Cursor="Hand"/>
+                    <Button x:Name="btn_num2" Click="btn_num2_Click" Content="10"  HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource Pop_NumButton}" Cursor="Hand" />
+                    <Button x:Name="btn_num3" Click="btn_num3_Click" Content="100"  HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource Pop_NumButton}" Cursor="Hand" />
+                    <Button x:Name="btn_num4" Click="btn_num4_Click" Content="500"  HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource Pop_NumButton}" Margin="0,0,0,12" Cursor="Hand"/>
+                </StackPanel>
+            </Border>
+        </Popup>
+        <!--抽奖弹窗 Visibility="{Binding ResultVisibility}"  -->
+        <Border  Visibility="{Binding ResultVisibility}"   x:Name="giftInfo"  CornerRadius="12"  Height="311" Width="330" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="6" Margin="0,0,0,3">
+            <Border.Background>
+                <SolidColorBrush Opacity="0" Color="White"/>
+            </Border.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*"/>
+                    <ColumnDefinition Width="23*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="28*"/>
+                    <RowDefinition Height="28*"/>
+                    <RowDefinition Height="129*"/>
+                    <RowDefinition Height="37*"/>
+                    <RowDefinition Height="76*"/>
+                </Grid.RowDefinitions>
+                <Border CornerRadius="12" Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="3" Background="White"/>
+                <Image Grid.ColumnSpan="2" Grid.RowSpan="2" Source="Resources\icon-modal-header_3dd94a.png" Stretch="Fill" Width="248" Margin="50,0,0,12"/>
+                <TextBlock Grid.Row="0" Grid.RowSpan="2"  Grid.ColumnSpan="3" Text="恭喜获得神秘礼物" Foreground="White" FontSize="18"  TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="280"  Margin="25,0,0,20" Height="24" />
+                <!--获得列表-->
+                <ListBox Style="{DynamicResource ListBoxStyle1}"  x:Name="list_result" HorizontalContentAlignment="Center" HorizontalAlignment="Center"   VerticalAlignment="Bottom"   Grid.Row="2" Grid.ColumnSpan="3" Margin="6,0,10,2" BorderThickness="0"  >
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Focusable" Value="false"/>
+                            <Setter Property="Margin" Value="6,0,6,0"/>
+ 
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <!-- For setting widthof control-->
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <!--{Binding  ImgName}  -->
+                                <Image  gif:AnimationBehavior.SourceUri="{Binding  ImgName}" Width="61" Height="61" HorizontalAlignment="Center" Margin="0,0,0,4"/>
+                                <TextBlock Text="{Binding Name}" Foreground="Black" FontWeight="Medium"   FontSize="14"  Grid.Row="1" TextAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <!--提示字符串-->
+                <TextBlock Text="已经放入礼物 - 仓库" Grid.Row="3" Grid.ColumnSpan="2" Foreground="#999999" FontSize="14"  VerticalAlignment="Center" HorizontalAlignment="Left" Height="18" Margin="100,0,0,3" Width="127"/>
+                <!--按钮”知道了“-->
+                <Button  FocusVisualStyle="{x:Null}" x:Name="btn_submit" Click="btn_submit_Click"  Grid.Row="4" Margin="22,7,7,23" Cursor="Hand">
+                    <Button.Template >
+                        <ControlTemplate TargetType="{x:Type Button}" >
+                            <Border BorderBrush="#FF8800" Background="White" BorderThickness="1" CornerRadius="24">
+                                <TextBlock Text="知道了" Foreground="#FF8800" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <!--按钮”再买一次“-->
+                <Button FocusVisualStyle="{x:Null}" x:Name="btn_saleagain" Click="btn_saleagain_Click" Grid.Row="4" Grid.Column="1" Margin="8,8,26,23" Grid.ColumnSpan="2" Style="{StaticResource AgainButton}" Cursor="Hand"/>
+            </Grid>
+        </Border>
+        <!--提示弹窗 Visibility="{Binding TipsVisibility}"-->
+        <Border  Visibility="{Binding TipsVisibility}" x:Name="tips" Background="Black" CornerRadius="16" Opacity="0.75" Margin="0,24,0,5" Height="78" Width="210"  HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4">
+            <TextBlock Text="{Binding NumTips}" Foreground="White" FontSize="18" TextWrapping="Wrap" Opacity="0.9" TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" Width="190" />
+        </Border>
+        <!--增加成功提示 {Binding IncreaseVisibility}    -->
+            <Border  Visibility="Hidden" x:Name="tips_increase" Background="Black" CornerRadius="12" Opacity="0.75" Margin="0,34,0,5" Height="56" Width="230"  HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="8,0,0,0">
+                <TextBlock Text="赠送成功，获得" Foreground="White" FontSize="18" TextWrapping="Wrap" Opacity="0.9" TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Image  Source="Resources\icon-crystal-big_0048d3.png" Width="40" Height="40" Margin="0" />
+                <TextBlock Text="{Binding IncreaseStr1}" Foreground="White" FontSize="18" TextWrapping="Wrap" Opacity="0.9" TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+        </Border>
+        <Canvas Grid.Row="6" Grid.RowSpan="2" Grid.ColumnSpan="2" >
+            <Border Name="grid_Area" Visibility="Hidden" Background="#80000000" Width="49" Height="16" Canvas.Left="25" Canvas.Top="75" CornerRadius="8">
+                <StackPanel Orientation="Horizontal">
+                    <Image  Source="Resources\icon-crystal-big_0048d3.png" Width="18" Height="18"/>
+                    <TextBlock Text="+" Foreground="White" FontSize="12" TextWrapping="Wrap" Opacity="0.9" TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding IncreaseStr2}" Foreground="White" FontSize="12" TextWrapping="Wrap" Opacity="0.9" TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </StackPanel>
+            </Border>
+        </Canvas>
+    </Grid>
+</Window>

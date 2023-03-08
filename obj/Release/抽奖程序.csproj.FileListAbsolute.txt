@@ -1,0 +1,55 @@
+C:\Users\11275\Desktop\抽奖程序\bin\Release\Resources\iconfont.ttf
+C:\Users\11275\Desktop\抽奖程序\bin\Release\抽奖程序.exe.config
+C:\Users\11275\Desktop\抽奖程序\bin\Release\抽奖程序.exe
+C:\Users\11275\Desktop\抽奖程序\bin\Release\抽奖程序.pdb
+C:\Users\11275\Desktop\抽奖程序\bin\Release\Newtonsoft.Json.dll
+C:\Users\11275\Desktop\抽奖程序\bin\Release\Newtonsoft.Json.xml
+C:\Users\11275\Desktop\抽奖程序\obj\Release\抽奖程序.csproj.AssemblyReference.cache
+C:\Users\11275\Desktop\抽奖程序\obj\Release\抽奖程序.csproj.SuggestedBindingRedirects.cache
+C:\Users\11275\Desktop\抽奖程序\obj\Release\GiftWindow.g.cs
+C:\Users\11275\Desktop\抽奖程序\obj\Release\MainWindow.g.cs
+C:\Users\11275\Desktop\抽奖程序\obj\Release\ModifyWindow.g.cs
+C:\Users\11275\Desktop\抽奖程序\obj\Release\App.g.cs
+C:\Users\11275\Desktop\抽奖程序\obj\Release\抽奖程序_Content.g.cs
+C:\Users\11275\Desktop\抽奖程序\obj\Release\抽奖程序_MarkupCompile.cache
+C:\Users\11275\Desktop\抽奖程序\obj\Release\抽奖程序_MarkupCompile.lref
+C:\Users\11275\Desktop\抽奖程序\obj\Release\GiftWindow.baml
+C:\Users\11275\Desktop\抽奖程序\obj\Release\MainWindow.baml
+C:\Users\11275\Desktop\抽奖程序\obj\Release\ModifyWindow.baml
+C:\Users\11275\Desktop\抽奖程序\obj\Release\抽奖程序.g.resources
+C:\Users\11275\Desktop\抽奖程序\obj\Release\抽奖程序.Properties.Resources.resources
+C:\Users\11275\Desktop\抽奖程序\obj\Release\抽奖程序.csproj.GenerateResource.cache
+C:\Users\11275\Desktop\抽奖程序\obj\Release\抽奖程序.csproj.CoreCompileInputs.cache
+C:\Users\11275\Desktop\抽奖程序\obj\Release\抽奖程序.csproj.CopyComplete
+C:\Users\11275\Desktop\抽奖程序\obj\Release\抽奖程序.exe
+C:\Users\11275\Desktop\抽奖程序\obj\Release\抽奖程序.pdb
+C:\Users\11275\Desktop\抽奖程序\bin\Release\XamlAnimatedGif.dll
+C:\Users\11275\Desktop\抽奖程序\bin\Release\XamlAnimatedGif.pdb
+C:\Users\11275\Desktop\抽奖程序\obj\Release\App.baml
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\bin\Release\Resources\iconfont.ttf
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\bin\Release\抽奖程序.exe.config
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\bin\Release\抽奖程序.exe
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\bin\Release\Newtonsoft.Json.dll
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\bin\Release\XamlAnimatedGif.dll
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\bin\Release\Newtonsoft.Json.xml
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\bin\Release\XamlAnimatedGif.pdb
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\抽奖程序.csproj.AssemblyReference.cache
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\抽奖程序.csproj.SuggestedBindingRedirects.cache
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\GiftWindow.g.cs
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\MainWindow.g.cs
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\ModifyWindow.g.cs
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\App.g.cs
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\抽奖程序_Content.g.cs
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\抽奖程序_MarkupCompile.cache
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\抽奖程序_MarkupCompile.lref
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\App.baml
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\GiftWindow.baml
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\MainWindow.baml
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\ModifyWindow.baml
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\抽奖程序.g.resources
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\抽奖程序.Properties.Resources.resources
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\抽奖程序.csproj.GenerateResource.cache
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\抽奖程序.csproj.CoreCompileInputs.cache
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\抽奖程序.csproj.CopyComplete
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\抽奖程序.exe
+C:\Users\LH\Desktop\新建文件夹 (3)\新建文件夹 (2)\抽奖程序\obj\Release\抽奖程序.pdb
