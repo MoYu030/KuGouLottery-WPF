@@ -4,7 +4,7 @@
 ![image](https://github.com/MoYu030/KuGouLottery-WPF/blob/main/Resources/131058.png)
 ![image](https://github.com/MoYu030/KuGouLottery-WPF/blob/main/Resources/131020.png)
 # 部分功能介绍
-点击**赠送按钮**就可以增加水晶数继续抽奖，点击按钮旁的**”可获  个水晶“**字样即可更改一次增加的水晶数
+点击**赠送按钮**就可以增加水晶数继续抽奖，点击按钮旁的**可获XXX个水晶**字样即可更改一次增加的水晶数
 # 说明
 礼物有三种 分别保存在不同的Json文件(文件名为XXXGiftData.json)中，
 因为Json文件在release文件夹中，所以要使用，需用VS打开项目，release调试项目
