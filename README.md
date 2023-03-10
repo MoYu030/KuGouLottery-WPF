@@ -1,5 +1,5 @@
 # 介绍
-1：1复刻了酷狗直播抽奖的UI界面，实现了与其相同的所有功能以及部分动画
+这是一款大小尺寸，UI界面都1：1完美复刻了酷狗直播抽奖的UI界面的一个程序，实现了与其相同的所有功能以及部分动画
 # 界面展示
 ![image](https://github.com/MoYu030/KuGouLottery-WPF/blob/main/Resources/131058.png)
 ![image](https://github.com/MoYu030/KuGouLottery-WPF/blob/main/Resources/131020.png)
